@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D&D Character Creation Quiz</title>
+    <script>
+        var results = {
+            strength: 0,
+            dexterity: 0,
+            constitution: 0,
+            intelligence: 0,
+            wisdom: 0,
+            charisma: 0
+        };
+
+        function calculateStats() {
+            var races = document.getElementsByName('characterRace');
+            for (var i = 0; i < races.length; i++) {
+                if (races[i].checked) {
+                    switch(races[i].value) {
+                        case 'Human':
+                            results.strength = 10;
+                            results.dexterity = 10;
+                            results.constitution = 10;
+                            results.intelligence = 10;
+                            results.wisdom = 10;
+                            results.charisma = 10;
+                            break;
+                        case 'Elf':
+                            results.strength = 10;
+                            results.dexterity = 12;
+                            results.constitution = 10;
+                            results.intelligence = 11;
+                            results.wisdom = 11;
+                            results.charisma = 11;
+                            break;
+                        case 'Dwarf':
+                            results.strength = 12;
+                            results.dexterity = 10;
+                            results.constitution = 12;
+                            results.intelligence = 10;
+                            results.wisdom = 10;
+                            results.charisma = 10;
+                            break;
+                        case 'Halfling':
+                            results.strength = 10;
+                            results.dexterity = 12;
+                            results.constitution = 12;
+                            results.intelligence = 10;
+                            results.wisdom = 10;
+                            results.charisma = 10;
+                            break;
+                        case 'Half-Orc':
+                            results.strength = 12;
+                            results.dexterity = 10;
+                            results.constitution = 10;
+                            results.intelligence = 10;
+                            results.wisdom = 10;
+                            results.charisma = 10;
+                            break;
+                        case 'Gnome':
+                            results.strength = 10;
+                            results.dexterity = 11;
+                            results.constitution = 10;
+                            results.intelligence = 12;
+                            results.wisdom = 10;
+                            results.charisma = 10;
+                            break;
+                        case 'Tiefling':
+                            results.strength = 10;
+                            results.dexterity = 10;
+                            results.constitution = 10;
+                            results.intelligence = 11;
+                            results.wisdom = 10;
+                            results.charisma = 12;
+                            break;
+                        case 'Dragonborn':
+                            results.strength = 12;
+                            results.dexterity = 10;
+                            results.constitution = 10;
+                            results.intelligence = 10;
+                            results.wisdom = 10;
+                            results.charisma = 11;
+                            break;
+                        case 'Half-Elf':
+                            results.strength = 10;
+                            results.dexterity = 10;
+                            results.constitution = 10;
+                            results.intelligence = 10;
+                            results.wisdom = 10;
+                            results.charisma = 10;
+                            break;
+                            //we need a way to deal with half races as points are assigned up to the player
+                        case 'Goliath':
+                            results.strength = 14;
+                            results.dexterity = 10;
+                            results.constitution = 11;
+                            results.intelligence = 10;
+                            results.wisdom = 10;
+                            results.charisma = 10;
+                            break;
+                    }
+                    break;
+                }
+            }
+            calculateStrength(); // Adjust strength based on additional questions
+            calculateDex();
+            displayResults();
+        }
+
+        function displayResults() {
+            var resultText = 'Character Stats: \n' +
+                             'Strength: ' + results.strength + '\n' +
+                             'Dexterity: ' + results.dexterity + '\n' +
+                             'Constitution: ' + results.constitution + '\n' +
+                             'Intelligence: ' + results.intelligence + '\n' +
+                             'Wisdom: ' + results.wisdom + '\n' +
+                             'Charisma: ' + results.charisma;
+            document.getElementById("result").innerText = resultText;
+        }
+    </script>
+</head>
+<body>
+    <div class="quiz-container">
+        <h2>Question 1</h2>
+        <div class="question">Choose your character's race:</div>
+        <ul class="options">
+            <li><input type="radio" name="characterRace" value="Human"> Human</li>
+            <li><input type="radio" name="characterRace" value="Elf"> Elf</li>
+            <li><input type="radio" name="characterRace" value="Dwarf"> Dwarf</li>
+            <li><input type="radio" name="characterRace" value="Halfling"> Halfling</li>
+            <li><input type="radio" name="characterRace" value="Half-Orc"> Half-Orc</li>
+            <li><input type="radio" name="characterRace" value="Gnome"> Gnome</li>
+            <li><input type="radio" name="characterRace" value="Tiefling"> Tiefling</li>
+            <li><input type="radio" name="characterRace" value="Dragonborn"> Dragonborn</li>
+            <li><input type="radio" name="characterRace" value="Half-Elf"> Half-Elf</li>
+            <li><input type="radio" name="characterRace" value="Goliath"> Goliath</li>
+        </ul>
+
+        <!-- Additional questions can be added here -->
+<!-- Strength Questions -->
+<h2>Strength Questions</h2>
+<div class="question">Do you engage in regular physical exercise or training outside of combat?</div>
+<label><input type="radio" name="strength1" value="2"> Yes</label>
+<label><input type="radio" name="strength1" value="-1"> No</label>
+
+<div class="question">Do you have visibly toned muscles?</div>
+<label><input type="radio" name="strength2" value="2"> Yes</label>
+<label><input type="radio" name="strength2" value="-1"> No</label>
+
+<div class="question">Do you carry supplies for your group?</div>
+<label><input type="radio" name="strength3" value="2"> Yes</label>
+<label><input type="radio" name="strength3" value="-1"> No</label>
+
+<div class="question">Do you believe that the best way to open a locked door is to kick it down? </div>
+<label><input type="radio" name="strength4" value="2"> Yes</label>
+<label><input type="radio" name="strength4" value="0"> No</label>
+
+<!-- Dexterity Questions -->
+<h2>Dexterity Questions</h2>
+<div class="question">placeholder?</div>
+<label><input type="radio" name="dexterity1" value="2"> Yes</label>
+<label><input type="radio" name="dexterity1" value="-1"> No</label>
+
+<div class="question">placeholder?</div>
+<label><input type="radio" name="dexterity2" value="2"> Yes</label>
+<label><input type="radio" name="dexterity2" value="-1"> No</label>
+
+<div class="question">placeholder?</div>
+<label><input type="radio" name="dexterity3" value="2"> Yes</label>
+<label><input type="radio" name="dexterity3" value="-1"> No</label>
+
+<div class="question">placeholder?</div>
+<label><input type="radio" name="dexterity4" value="2"> Yes</label>
+<label><input type="radio" name="dexterity4" value="-1"> No</label>
+
+<script>
+
+
+    // Assuming the 'results' object is defined elsewhere in your script
+
+            function calculateStrength() {
+            var strength1 = document.querySelector('input[name="strength1"]:checked');
+            var strength2 = document.querySelector('input[name="strength2"]:checked');
+            var strength3 = document.querySelector('input[name="strength3"]:checked');
+            var strength4 = document.querySelector('input[name="strength4"]:checked');
+
+            if (strength1 && strength2 && strength3 && strength4) {
+                strength1 = parseInt(strength1.value);
+                strength2 = parseInt(strength2.value);
+                strength3 = parseInt(strength3.value);
+                strength4 = parseInt(strength4.value);
+
+                results.strength += strength1 + strength2 + strength3 + strength4;
+            } else {
+                // Handle case where not all questions are answered
+                alert("Please answer all strength questions.");
+                return;
+            }
+        }
+            function calculateDex() {
+            var dexterity1 = document.querySelector('input[name="dexterity1"]:checked');
+            var dexterity2 = document.querySelector('input[name="dexterity2"]:checked');
+            var dexterity3 = document.querySelector('input[name="dexterity3"]:checked');
+            var dexterity4 = document.querySelector('input[name="dexterity4"]:checked');
+
+            if (dexterity1 && dexterity2 && dexterity3 && dexterity4) {
+                dexterity1 = parseInt(dexterity1.value);
+                dexterity2 = parseInt(dexterity2.value);
+                dexterity3 = parseInt(dexterity3.value);
+                dexterity4 = parseInt(dexterity4.value);
+
+                results.dexterity += dexterity1 + dexterity2 + dexterity3 + dexterity4;
+            } else {
+                // Handle case where not all questions are answered
+                alert("Please answer all dexterity questions.");
+                return;
+            }
+        }
+</script>
+
+
+<!-- Add a Submit button for the Strength section -->
+
+        <button onclick="calculateStats()">Submit</button>
+    </div>
+    <div id="result"></div>
+</body>
+</html>
